@@ -82,6 +82,14 @@ flooding the language server while typing."
   :type '(choice (const :tag "No limit" nil) integer)
   :group 'eglot-signature-posframe)
 
+(defcustom eglot-signature-posframe-first-line-only t
+  "When non-nil, show only the first line of the signature.
+Eldoc may report a verbose, multi-line signature that includes
+parameter documentation.  With this enabled only the first line,
+which is the signature itself, is displayed."
+  :type 'boolean
+  :group 'eglot-signature-posframe)
+
 (defcustom eglot-signature-posframe-parameters nil
   "Extra frame parameters passed to `posframe-show'."
   :type '(alist :key-type symbol :value-type sexp)
@@ -147,7 +155,10 @@ INFO's `:position' through `posn-at-point' themselves."
   "Display STRING in the posframe, or hide it when STRING is empty.
 Used as the callback for `eglot-signature-eldoc-function'."
   (if (and (stringp string) (> (length string) 0))
-      (eglot-signature-posframe--show string)
+      (eglot-signature-posframe--show
+       (if eglot-signature-posframe-first-line-only
+           (car (split-string string "\n"))
+         string))
     (eglot-signature-posframe--hide)))
 
 (defun eglot-signature-posframe--request (buffer)

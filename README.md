@@ -5,10 +5,14 @@ Show [eglot](https://github.com/joaotavora/eglot) signature help in a
 instead of the echo area.
 
 ## Motivation
-I have using eglot many years. `eglot` is a great package, with many integration Emacs's default behaviours. But I have started writing Rust many times with eglot, I had had a problem to check signature of function/method. The packages in Rust have many, many methods and countless traits, so I can not remember them and signature. 
-Currently, I use `eglot` with `corfu` . It's great, but I can't see signature while writing code because it shows on eldoc. Yes I know eldoc offers method showing help to buffer instead of echo area, but I want to see signature while writing, without moving my eye. 
+I have been using `eglot` in many years. It is a great package, offering deep integration with many of Emacs's default behaviors. However, I have started writing Rust many times with eglot, I have encountered difficulty when writing Rust code. Packages in Rust have many, many methods and countless traits. I can not remember them or their signature while writing code.
+Currently, I use `eglot` with `corfu` . It's great, but I can't see signature while writing code because it shows on eldoc. Although I know eldoc offers help documentation in the buffer rather than the echo area, but I want to see signature while writing, without having to move my focus elsewhere.
 
-So I made this package as simple as possible with LLM. No warranty while using this package, and this package is fully written by LLM. Please stop using this if you worry about LLM-generated code.
+To address this, I created this package. I aimed to keep it as simple as possible, utilizing an LLM during development. 
+
+### Disclaimer
+
+No warranty while using this package, and this package is fully written by LLM. Please use caution and discontinue use if you have concerns regarding LLM-generated code.
 
 ## Features
 
@@ -18,7 +22,7 @@ So I made this package as simple as possible with LLM. No warranty while using t
     package never touches `eglot-hover-eldoc-function`.
 - **Above or below point**
   - Choose where the posframe appears relative to cursor, and flip it on the fly.
-- **Auto hide** 
+- **Auto hide**
   - When eglot reports no signature while the posframe is visible,
     the posframe is hidden automatically. It also hides when you switch buffers.
 
@@ -28,7 +32,7 @@ So I made this package as simple as possible with LLM. No warranty while using t
 - [posframe](https://github.com/tumashu/posframe) 1.1.0+
 - [eglot](https://github.com/joaotavora/eglot) 1.15+ (bundled with Emacs 29+)
 
-A graphical Emacs frame is required; posframe does not work in a terminal.
+A graphical Emacs (no -nw) was tested. If childframe can run in terminal, this might be able to run in a terminal (with `-nw` option).
 
 ## Installation
 
