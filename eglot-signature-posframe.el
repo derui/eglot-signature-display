@@ -112,6 +112,11 @@ Positive values move the posframe downward."
 (defvar-local eglot-signature-posframe--timer nil
   "Idle timer scheduling the next signature request.")
 
+(defvar-local eglot-signature-posframe--last-signature nil
+  "First line of the last displayed signature, without text properties.
+Used to detect when the signature changes so the posframe is repositioned
+only on a new signature, not on every keystroke within the same call.")
+
 ;;; Position handlers
 
 (defun eglot-signature-posframe--poshandler ()
@@ -125,8 +130,19 @@ INFO's `:position' through `posn-at-point' themselves."
 ;;; Showing and hiding
 
 (defun eglot-signature-posframe--show (string)
-  "Show STRING in the signature posframe near point."
-  (when (posframe-workable-p)
+  "Show STRING in the signature posframe near point.
+When the first line of STRING (without text properties) matches the
+previously displayed signature, the posframe is not repositioned so it
+stays stable while the user types within the same function call."
+  (when-let* (((posframe-workable-p))
+              (key
+               (substring-no-properties
+                (car (split-string string "\n"))))
+              (same-signature
+               (not
+                (equal
+                 key eglot-signature-posframe--last-signature))))
+    (setq eglot-signature-posframe--last-signature key)
     (posframe-show
      eglot-signature-posframe--buffer
      :string string
@@ -147,6 +163,7 @@ INFO's `:position' through `posn-at-point' themselves."
 
 (defun eglot-signature-posframe--hide ()
   "Hide the signature posframe if it is visible."
+  (setq eglot-signature-posframe--last-signature nil)
   (posframe-hide eglot-signature-posframe--buffer))
 
 ;;; Requesting signatures
