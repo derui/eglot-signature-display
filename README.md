@@ -29,6 +29,9 @@ No warranty while using this package, and this package is fully written by LLM. 
   - When eglot reports no signature while the posframe is visible,
     the posframe is hidden automatically. It also hides when you switch buffers.
 
+## Screenshot
+![Screenshot](./screenshot/screenshot.png)
+
 ## Requirements
 
 - Emacs 29.1+
