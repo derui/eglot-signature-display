@@ -52,7 +52,7 @@
   :group 'eglot
   :prefix "eglot-signature-posframe-")
 
-(defcustom eglot-signature-posframe-position 'below
+(defcustom eglot-signature-posframe-position 'above
   "Where the posframe is shown relative to point.
 Either the symbol `below' (under point) or `above' (over point)."
   :type
