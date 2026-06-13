@@ -81,8 +81,6 @@ M-x eglot-signature-posframe-toggle-position
 | --- | --- | --- |
 | `eglot-signature-posframe-position` | `above` | `below` or `above` point. |
 | `eglot-signature-posframe-delay` | `0.2` | Idle seconds before requesting a signature. |
-| `eglot-signature-posframe-internal-border-width` | `8` | Internal border width in pixels. |
-| `eglot-signature-posframe-internal-border-color` | `"transparent"` | Internal border color. |
 | `eglot-signature-posframe-border-width` | `1` | Outer border width in pixels. |
 | `eglot-signature-posframe-border-color` | `"gray50"` | Outer border color. |
 | `eglot-signature-posframe-max-width` | `nil` | Max width in characters, or `nil` for no limit. |
