@@ -145,24 +145,24 @@ Otherwise a new posframe is created at the current point."
           (let ((inhibit-read-only t))
             (erase-buffer)
             (insert string)))
-      (setq eglot-signature-posframe--frame
-            (posframe-show
-             eglot-signature-posframe--buffer
-             :string string
-             :position (point)
-             :poshandler (eglot-signature-posframe--poshandler)
-             :y-pixel-offset eglot-signature-posframe-y-pixel-offset
-             :font-height nil
-             :foreground-color
-             (face-foreground 'eglot-signature-posframe-face nil t)
-             :background-color
-             (face-background 'eglot-signature-posframe-face nil t)
-             :internal-border-width eglot-signature-posframe-border-width
-             :internal-border-color eglot-signature-posframe-border-color
-             :max-width eglot-signature-posframe-max-width
-             :accept-focus nil
-             :hidehandler #'posframe-hidehandler-when-buffer-switch
-             :override-parameters eglot-signature-posframe-parameters)))))
+      (setq
+       eglot-signature-posframe--frame
+       (posframe-show
+        eglot-signature-posframe--buffer
+        :string string
+        :position (point)
+        :poshandler (eglot-signature-posframe--poshandler)
+        :y-pixel-offset eglot-signature-posframe-y-pixel-offset
+        :foreground-color
+        (face-foreground 'eglot-signature-posframe-face nil t)
+        :background-color
+        (face-background 'eglot-signature-posframe-face nil t)
+        :internal-border-width eglot-signature-posframe-border-width
+        :internal-border-color eglot-signature-posframe-border-color
+        :max-width eglot-signature-posframe-max-width
+        :accept-focus nil
+        :hidehandler #'posframe-hidehandler-when-buffer-switch
+        :override-parameters eglot-signature-posframe-parameters)))))
 
 (defun eglot-signature-posframe--hide ()
   "Hide the signature posframe if it is visible."
