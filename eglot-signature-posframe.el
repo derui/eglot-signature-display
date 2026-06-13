@@ -67,13 +67,23 @@ flooding the language server while typing."
   :type 'number
   :group 'eglot-signature-posframe)
 
-(defcustom eglot-signature-posframe-border-width 1
+(defcustom eglot-signature-posframe-border-width 8
   "Width in pixels of the posframe's internal border."
   :type 'integer
   :group 'eglot-signature-posframe)
 
-(defcustom eglot-signature-posframe-border-color "gray50"
+(defcustom eglot-signature-posframe-border-color "transparent"
   "Color of the posframe's internal border."
+  :type 'string
+  :group 'eglot-signature-posframe)
+
+(defcustom eglot-signature-posframe-outer-border-width 1
+  "Width in pixels of the posframe's outer border."
+  :type 'integer
+  :group 'eglot-signature-posframe)
+
+(defcustom eglot-signature-posframe-outer-border-color "gray50"
+  "Color of the posframe's outer border."
   :type 'string
   :group 'eglot-signature-posframe)
 
@@ -159,6 +169,8 @@ Otherwise a new posframe is created at the current point."
         (face-background 'eglot-signature-posframe-face nil t)
         :internal-border-width eglot-signature-posframe-border-width
         :internal-border-color eglot-signature-posframe-border-color
+        :border-width eglot-signature-posframe-outer-border-width
+        :border-color eglot-signature-posframe-outer-border-color
         :max-width eglot-signature-posframe-max-width
         :accept-focus nil
         :hidehandler #'posframe-hidehandler-when-buffer-switch
