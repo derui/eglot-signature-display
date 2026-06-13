@@ -20,6 +20,9 @@ No warranty while using this package, and this package is fully written by LLM. 
   - Only the function signature returned by the language
     server is shown. Documentation and hover help are never displayed — this
     package never touches `eglot-hover-eldoc-function`.
+  - By default only the first line of the signature is shown, dropping
+    verbose parameter documentation. Set
+    `eglot-signature-posframe-first-line-only` to `nil` for the full output.
 - **Above or below point**
   - Choose where the posframe appears relative to cursor, and flip it on the fly.
 - **Auto hide**
@@ -81,6 +84,7 @@ M-x eglot-signature-posframe-toggle-position
 | `eglot-signature-posframe-border-width` | `1` | Internal border width in pixels. |
 | `eglot-signature-posframe-border-color` | `"gray50"` | Internal border color. |
 | `eglot-signature-posframe-max-width` | `nil` | Max width in characters, or `nil` for no limit. |
+| `eglot-signature-posframe-first-line-only` | `t` | Show only the first line of the signature, dropping verbose parameter documentation. Set to `nil` for the full multi-line signature. |
 | `eglot-signature-posframe-y-pixel-offset` | `0` | Vertical offset in pixels added to the posframe position (positive moves down). |
 | `eglot-signature-posframe-parameters` | `nil` | Extra frame parameters passed to `posframe-show`. |
 
