@@ -1,4 +1,4 @@
-# eglot-signature-posframe
+# eglot-signature-display
 
 Show [eglot](https://github.com/joaotavora/eglot) signature help inline near
 point, instead of the echo area. The signature is rendered as a virtual line
@@ -22,8 +22,8 @@ No warranty while using this package, and this package is fully written by LLM. 
     you typed it or a completion expanded a call like `abc(|)` for you — and
     refreshes as you fill in the arguments, so the active-parameter highlight
     keeps up. Ordinary navigation does not bring it up.
-  - `M-x eglot-signature-posframe-show` requests it on demand (e.g. when
-    point is already inside a call); `M-x eglot-signature-posframe-hide` (or
+  - `M-x eglot-signature-display-show` requests it on demand (e.g. when
+    point is already inside a call); `M-x eglot-signature-display-hide` (or
     `C-g`) dismisses it.
 - **Display signature only**
   - Only the function signature returned by the language
@@ -31,7 +31,7 @@ No warranty while using this package, and this package is fully written by LLM. 
     package never touches `eglot-hover-eldoc-function`.
   - By default only the first line of the signature is shown, dropping
     verbose parameter documentation. Set
-    `eglot-signature-posframe-first-line-only` to `nil` for the full output.
+    `eglot-signature-display-first-line-only` to `nil` for the full output.
 - **Above or below point**
   - Choose where the signature appears relative to cursor, and flip it on the fly.
 - **Auto hide**
@@ -53,23 +53,23 @@ dependency.
 
 ## Installation
 
-Place `eglot-signature-posframe.el` on your `load-path` and:
+Place `eglot-signature-display.el` on your `load-path` and:
 
 ```elisp
-(require 'eglot-signature-posframe)
+(require 'eglot-signature-display)
 ```
 
 Or with `use-package` and a package manager that can fetch from Git:
 
 ```elisp
-(use-package eglot-signature-posframe
-  :hook (eglot-managed-mode . eglot-signature-posframe-mode))
+(use-package eglot-signature-display
+  :hook (eglot-managed-mode . eglot-signature-display-mode))
 ```
 
 Or with `elpaca` or `straight`:
 
 ```elisp
-(elpaca (elpaca (key-layout-mapper :type git :host github :repo "derui/eglot-signature-posframe")))
+(elpaca (elpaca (key-layout-mapper :type git :host github :repo "derui/eglot-signature-display")))
 ```
 
 ## Usage
@@ -77,31 +77,31 @@ Or with `elpaca` or `straight`:
 Enable the minor mode in eglot-managed buffers:
 
 ```elisp
-(add-hook 'eglot-managed-mode-hook #'eglot-signature-posframe-mode)
+(add-hook 'eglot-managed-mode-hook #'eglot-signature-display-mode)
 ```
 
 As you type the arguments of a function call, the signature appears inline
 near point. When you leave the call, it disappears. To bring it up on demand,
-run `M-x eglot-signature-posframe-show`; to dismiss it, `M-x
-eglot-signature-posframe-hide` (or `C-g`).
+run `M-x eglot-signature-display-show`; to dismiss it, `M-x
+eglot-signature-display-hide` (or `C-g`).
 
 To flip the signature between above and below point interactively:
 
 ```
-M-x eglot-signature-posframe-toggle-position
+M-x eglot-signature-display-toggle-position
 ```
 
 ## Customization
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `eglot-signature-posframe-position` | `above` | `below` or `above` point. |
-| `eglot-signature-posframe-delay` | `0.2` | Idle seconds before requesting a signature. |
-| `eglot-signature-posframe-border-width` | `1` | Box border width in pixels. `0` disables the box. |
-| `eglot-signature-posframe-border-color` | `"gray50"` | Box border color. |
-| `eglot-signature-posframe-max-width` | `nil` | Max width in characters, or `nil` for no limit. |
-| `eglot-signature-posframe-first-line-only` | `t` | Show only the first line of the signature, dropping verbose parameter documentation. Set to `nil` for the full multi-line signature. |
-| `eglot-signature-posframe-extra-trigger-characters` | `nil` | Extra characters (as strings) that activate the display, added to the server's trigger characters. |
+| `eglot-signature-display-position` | `above` | `below` or `above` point. |
+| `eglot-signature-display-delay` | `0.2` | Idle seconds before requesting a signature. |
+| `eglot-signature-display-border-width` | `1` | Box border width in pixels. `0` disables the box. |
+| `eglot-signature-display-border-color` | `"gray50"` | Box border color. |
+| `eglot-signature-display-max-width` | `nil` | Max width in characters, or `nil` for no limit. |
+| `eglot-signature-display-first-line-only` | `t` | Show only the first line of the signature, dropping verbose parameter documentation. Set to `nil` for the full multi-line signature. |
+| `eglot-signature-display-extra-trigger-characters` | `nil` | Extra characters (as strings) that activate the display, added to the server's trigger characters. |
 
 ## License
 
